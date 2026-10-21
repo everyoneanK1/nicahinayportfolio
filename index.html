@@ -1,0 +1,424 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Nica Hinay Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: sticky pill nav, split hero with tilted work samples, services in two columns (social / admin), filterable proof-of-work gallery with lightbox, experience timeline, contact band. */
+:root{
+  --bg:#fff4f8; --surface:#ffffff; --ink:#3b1427; --muted:#7a5063; --line:#f4cddd;
+  --pink:#d63a7b; --on-pink:#ffffff; --pink-soft:#ffdbe8; --rose:#b5124f; --blush:#ffe9f1;
+  --shadow:0 18px 40px -22px rgba(181,18,79,.45);
+  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"DM Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#1b0c14; --surface:#291420; --ink:#ffeaf2; --muted:#d1a3b7; --line:#4b2637;
+  --pink:#ff86b3; --on-pink:#2a0f1c; --pink-soft:#4a1f33; --rose:#ff9cc4; --blush:#2f1625;
+  --shadow:0 18px 40px -22px rgba(0,0,0,.8); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1b0c14; --surface:#291420; --ink:#ffeaf2; --muted:#d1a3b7; --line:#4b2637;
+  --pink:#ff86b3; --on-pink:#2a0f1c; --pink-soft:#4a1f33; --rose:#ff9cc4; --blush:#2f1625;
+  --shadow:0 18px 40px -22px rgba(0,0,0,.8); color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;
+  padding-block:0;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+h1,h2,h3{font-family:var(--display);line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.02em}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--pink);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin-inline:auto}
+.eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--rose)}
+section{padding-block:76px}
+.sec-head{display:grid;gap:12px;margin-bottom:36px;max-width:680px}
+.sec-head h2{font-size:clamp(30px,5vw,48px)}
+.sec-head p{color:var(--muted)}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;padding-block:12px}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:12px;background:color-mix(in srgb,var(--surface) 88%,transparent);
+  backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:999px;padding:8px 10px 8px 20px;max-width:1120px;margin-inline:auto}
+.brand{font-family:var(--display);font-weight:700;text-decoration:none;font-size:18px;white-space:nowrap}
+.brand i{font-style:normal;color:var(--pink)}
+.links{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
+.links a{text-decoration:none;font-size:14.5px;font-weight:500;padding:7px 12px;border-radius:999px;color:var(--muted)}
+.links a:hover{background:var(--pink-soft);color:var(--ink)}
+.links a.cta{background:var(--pink);color:var(--on-pink)}
+@media(max-width:760px){.links a:not(.cta){display:none}}
+
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 16px var(--body);padding:13px 22px;border-radius:999px;border:1.5px solid var(--pink);
+  background:var(--pink);color:var(--on-pink);text-decoration:none;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn:hover{transform:translateY(-2px)}
+.btn{transition:transform .2s}
+
+/* hero */
+.hero{padding-top:44px;padding-bottom:64px}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(40px,7vw,78px);margin-block:16px 22px}
+.hero h1 em{font-style:normal;background:var(--pink);color:var(--on-pink);padding:0 .2em .04em;border-radius:.22em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.lede{font-size:19px;color:var(--muted);max-width:52ch}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:40px}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px 16px;font-size:14px;color:var(--muted);min-width:0}
+.fact b{display:block;color:var(--ink);font-family:var(--display);font-size:16px;margin-bottom:2px}
+.stack{position:relative;aspect-ratio:1/1.12;max-width:100%}
+.stack img{position:absolute;border-radius:16px;border:6px solid var(--surface);box-shadow:var(--shadow);height:auto}
+.stack .s1{width:50%;left:2%;top:8%;transform:rotate(-6deg);z-index:1}
+.stack .s2{width:52%;right:0;top:0;transform:rotate(5deg);z-index:2}
+.stack .s3{width:50%;left:26%;bottom:0;transform:rotate(-1.5deg);z-index:3}
+.sticker{position:absolute;z-index:4;right:2%;bottom:10%;background:var(--pink);color:var(--on-pink);font-family:var(--mono);font-size:12px;letter-spacing:.06em;
+  padding:10px 14px;border-radius:999px;transform:rotate(-8deg);text-transform:uppercase}
+@media(max-width:860px){.hero-grid{grid-template-columns:1fr}.stack{max-width:420px;margin-inline:auto;width:100%}.facts{grid-template-columns:1fr}}
+
+/* about band */
+.about{background:var(--blush);border-radius:36px;padding:clamp(28px,5vw,56px)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.about h2{font-size:clamp(28px,4.4vw,42px)}
+.about p{color:var(--muted)}
+.about p+p{margin-top:14px}
+@media(max-width:760px){.about-grid{grid-template-columns:1fr}}
+
+/* services */
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.svc{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:28px;min-width:0}
+.svc h3{font-size:26px;margin-bottom:6px}
+.svc>p{color:var(--muted);margin-bottom:18px}
+.svc ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.svc li{display:flex;gap:12px;align-items:flex-start;font-weight:500}
+.svc li::before{content:"";flex:none;width:9px;height:9px;margin-top:9px;border-radius:50%;background:var(--pink)}
+.svc.alt{background:var(--pink-soft);border-color:transparent}
+@media(max-width:760px){.svc-grid{grid-template-columns:1fr}}
+
+/* gallery */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.chip{font:500 14.5px var(--body);padding:8px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--pink);border-color:var(--pink);color:var(--on-pink)}
+.works{list-style:none;margin:0;padding:0;columns:3 260px;column-gap:18px}
+.work{break-inside:avoid;margin-bottom:18px}
+.work[hidden]{display:none}
+.work-btn{display:block;width:100%;padding:0;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--surface);cursor:zoom-in;text-align:left;font:inherit;color:inherit;
+  transition:transform .25s,box-shadow .25s}
+.work-btn:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.work-btn img{display:block;width:100%;height:auto}
+.work-cap{display:grid;gap:2px;padding:12px 16px 14px}
+.work-cap b{font-family:var(--display);font-size:16px}
+.work-cap small{color:var(--muted);font-size:13.5px;line-height:1.4}
+.note{margin-top:22px;font-size:14.5px;color:var(--muted);max-width:70ch}
+
+dialog.lb{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100%;height:100%;color:#fff}
+dialog.lb::backdrop{background:rgba(40,8,24,.88)}
+.lb-in{display:grid;grid-template-rows:1fr auto;height:100%;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));gap:12px}
+.lb-img{min-height:0;display:flex;align-items:center;justify-content:center}
+.lb-img img{max-width:100%;max-height:100%;object-fit:contain;border-radius:14px}
+.lb-bar{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.lb-bar p{max-width:60ch;font-size:15px}
+.lb-bar b{font-family:var(--display)}
+.lb-btns{display:flex;gap:8px}
+.lb-btns button{font:600 15px var(--body);padding:10px 16px;border-radius:999px;border:0;background:#ffdbe8;color:#3b1427;cursor:pointer}
+
+/* process */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:14px;counter-reset:s}
+.steps li{counter-increment:s;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:18px;min-width:0}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--pink);color:var(--on-pink);font:500 14px var(--mono);margin-bottom:12px}
+.steps b{display:block;font-family:var(--display);font-size:17px;margin-bottom:4px}
+.steps span{font-size:14.5px;color:var(--muted);line-height:1.45}
+@media(max-width:960px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.steps{grid-template-columns:1fr}}
+
+/* readiness */
+.ready{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.rd.wide{grid-column:1/-1}
+.rd{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:20px;display:grid;gap:4px;align-content:start;min-width:0}
+.rd small{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--rose)}
+.rd b{font-family:var(--display);font-size:19px;line-height:1.2}
+.rd span{color:var(--muted);font-size:14.5px;line-height:1.45}
+@media(max-width:480px){.ready{grid-template-columns:1fr}}
+
+/* experience */
+.jobs{display:grid;gap:16px}
+.job{display:grid;grid-template-columns:200px 1fr;gap:24px;background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:26px}
+.job .when{font-family:var(--mono);font-size:13px;color:var(--rose);letter-spacing:.04em}
+.job .org{display:block;margin-top:6px;color:var(--muted);font-size:14.5px}
+.job h3{font-size:22px;margin-bottom:10px}
+.job ul{margin:0;padding-left:20px;display:grid;gap:5px;color:var(--muted)}
+.job li::marker{color:var(--pink)}
+.job>div{min-width:0}
+@media(max-width:700px){.job{grid-template-columns:1fr;gap:10px}}
+
+/* skills */
+.skill-cols{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:26px;min-width:0}
+.box h3{font-size:20px;margin-bottom:14px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-size:14.5px;font-weight:500;background:var(--pink-soft);padding:6px 14px;border-radius:999px}
+.cred{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:20px}
+.cred ul{margin:0;padding-left:20px;display:grid;gap:8px;color:var(--muted);font-size:15.5px}
+.cred li::marker{color:var(--pink)}
+@media(max-width:860px){.skill-cols,.cred{grid-template-columns:1fr}}
+
+/* contact */
+.contact{background:var(--pink);color:var(--on-pink);border-radius:36px;padding:clamp(28px,6vw,64px);display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}
+.contact h2{font-size:clamp(32px,5.4vw,56px)}
+.contact p{margin-top:14px;opacity:.92;max-width:46ch}
+.rows{display:grid;gap:10px;min-width:0}
+.row{display:flex;gap:10px;align-items:center;justify-content:space-between;background:color-mix(in srgb,var(--on-pink) 14%,transparent);border-radius:18px;padding:12px 14px 12px 18px;min-width:0}
+.row div{min-width:0}
+.row small{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+.row span{overflow-wrap:anywhere;font-weight:500;user-select:all}
+.row button,.row a.go{flex:none;font:600 13.5px var(--body);padding:8px 14px;border-radius:999px;border:0;cursor:pointer;background:var(--on-pink);color:var(--pink);text-decoration:none}
+@media(max-width:800px){.contact{grid-template-columns:1fr}}
+footer{padding-block:36px 48px;text-align:center;color:var(--muted);font-size:14px}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#top">Nica<i>.</i>Hinay</a>
+    <nav class="links" aria-label="Sections">
+      <a href="#services">Services</a><a href="#work">My work</a><a href="#availability">Availability</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a class="cta" href="#contact">Hire me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top" class="wrap">
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">Social media and administrative support</p>
+        <h1>Your pages stay active. Your paperwork stays <em>in order.</em></h1>
+        <p class="lede">I'm Nica Lee Shane Hinay, a virtual assistant who creates and schedules your posts, answers your inquiries, and keeps your files, calendars and records organized, so you can focus on your clients.</p>
+        <div class="cta-row">
+          <a class="btn" href="#work">See my work</a>
+          <a class="btn ghost" href="#contact">Let's talk</a>
+        </div>
+        <div class="facts">
+          <div class="fact"><b>Social media manager</b>GoldFunnel Co., June 2026 – September 2026</div>
+          <div class="fact"><b>Admin support</b>Freelance, June 2026 – September 2026</div>
+          <div class="fact"><b>NC II certified</b>Computer Systems Servicing</div>
+        </div>
+      </div>
+      <div class="stack" aria-hidden="true">
+        <img class="s1" src="img/w03.jpg" width="1448" height="2048" alt="">
+        <img class="s2" src="img/w13.jpg" width="1448" height="2048" alt="">
+        <img class="s3" src="img/w14.jpg" width="1080" height="1350" alt="">
+        <span class="sticker">Real client work</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="about">
+    <div class="about-grid">
+      <h2>Reliable, detail-oriented and easy to work with.</h2>
+      <div>
+        <p>I have an Information Systems background and hands-on experience in social media management, customer service and office administration. I work well in fast-paced settings and I like clear processes.</p>
+        <p>I take care of the daily details: captions proofread, files named properly, messages answered, schedules confirmed. Every client gets a dependable, friendly point of contact.</p>
+      </div>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="sec-head">
+      <p class="eyebrow">What I do for clients</p>
+      <h2>One reliable assistant for your online business</h2>
+    </div>
+    <div class="svc-grid">
+      <article class="svc">
+        <h3>Social media management</h3>
+        <p>Consistent, on-brand content that gets posted on time and answered promptly.</p>
+        <ul>
+          <li>Content creation and scheduling</li>
+          <li>Graphics and layouts for promotions</li>
+          <li>Caption writing and proofreading</li>
+          <li>Page monitoring and inquiry replies</li>
+          <li>Content calendars and file organization</li>
+        </ul>
+      </article>
+      <article class="svc alt">
+        <h3>Administrative tasks</h3>
+        <p>Accurate records and smooth day-to-day operations behind the scenes.</p>
+        <ul>
+          <li>Data entry and document management</li>
+          <li>Email and calendar management</li>
+          <li>Reports, memos and official correspondence</li>
+          <li>Scheduling appointments and meetings</li>
+          <li>Meeting minutes, filing and record keeping</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section id="availability">
+    <div class="sec-head">
+      <p class="eyebrow">Remote work readiness</p>
+      <h2>Set up to work with you from day one</h2>
+      <p>A reliable connection, backup power and a quiet workspace, so calls and deadlines are never a problem.</p>
+    </div>
+    <div class="ready">
+      <div class="rd"><small>Internet</small><b>Converge 5G</b><span>Backup: Smart 5G mobile hotspot</span></div>
+      <div class="rd"><small>Power backup</small><b>NSS Solar Power Station</b><span>3-hour backup</span></div>
+      <div class="rd"><small>Equipment</small><b>Lenovo, Core i3</b><span>Laptop for daily admin and social media work</span></div>
+      <div class="rd"><small>Workspace</small><b>Dedicated home office</b><span>Quiet environment with a professional video-call background</span></div>
+      <div class="rd wide"><small>Availability</small><b>Part-time | Flexible across US (EST/PST), UK (GMT), AU (AEST) time zones</b></div>
+    </div>
+    </section>
+
+  <section id="work">
+    <div class="sec-head">
+      <p class="eyebrow">Proof of work</p>
+      <h2>Posts, ads and stories I've made</h2>
+      <p>Sixteen pieces from my social media work for GoldFunnel Co., a digital products brand for freelancers and virtual assistants. Tap any piece to view it full size.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filter work samples">
+      <button class="chip" type="button" data-f="all" aria-pressed="true">All work</button>
+      <button class="chip" type="button" data-f="ads" aria-pressed="false">Ads and promos</button>
+      <button class="chip" type="button" data-f="posters" aria-pressed="false">Post graphics</button>
+      <button class="chip" type="button" data-f="stories" aria-pressed="false">Stories</button>
+      <button class="chip" type="button" data-f="brand" aria-pressed="false">Page branding</button>
+    </div>
+    <ul class="works" id="works">
+<li class="work" data-cat="ads"><button type="button" class="work-btn" data-i="0" aria-label="Open Toolkit launch ad"><img src="img/w01.jpg" width="1200" height="628" alt="Toolkit launch ad: Launch-price promo with a comment-to-get-the-link call to action."><span class="work-cap"><b>Toolkit launch ad</b><small>Launch-price promo with a comment-to-get-the-link call to action.</small></span></button></li>
+<li class="work" data-cat="ads"><button type="button" class="work-btn" data-i="1" aria-label="Open Before and after promo"><img src="img/w14.jpg" width="1080" height="1350" alt="Before and after promo: Problem and result layout built to stop the scroll."><span class="work-cap"><b>Before and after promo</b><small>Problem and result layout built to stop the scroll.</small></span></button></li>
+<li class="work" data-cat="ads"><button type="button" class="work-btn" data-i="2" aria-label="Open What's inside"><img src="img/w02.jpg" width="940" height="788" alt="What's inside: Feature breakdown of the toolkit contents in brand colors."><span class="work-cap"><b>What's inside</b><small>Feature breakdown of the toolkit contents in brand colors.</small></span></button></li>
+<li class="work" data-cat="posters"><button type="button" class="work-btn" data-i="3" aria-label="Open Enter your pipeline"><img src="img/w03.jpg" width="1448" height="2048" alt="Enter your pipeline: Concept poster with a single clear message."><span class="work-cap"><b>Enter your pipeline</b><small>Concept poster with a single clear message.</small></span></button></li>
+<li class="work" data-cat="posters"><button type="button" class="work-btn" data-i="4" aria-label="Open Here's why"><img src="img/w04.jpg" width="1448" height="2048" alt="Here's why: Product mockup layout with price and checkout details."><span class="work-cap"><b>Here's why</b><small>Product mockup layout with price and checkout details.</small></span></button></li>
+<li class="work" data-cat="posters"><button type="button" class="work-btn" data-i="5" aria-label="Open Elevate your business"><img src="img/w05.jpg" width="1448" height="2048" alt="Elevate your business: Carousel cover with file tabs for multi-slide posts."><span class="work-cap"><b>Elevate your business</b><small>Carousel cover with file tabs for multi-slide posts.</small></span></button></li>
+<li class="work" data-cat="posters"><button type="button" class="work-btn" data-i="6" aria-label="Open Leads that actually convert"><img src="img/w12.jpg" width="1448" height="2048" alt="Leads that actually convert: Headline-led layout with a short supporting caption."><span class="work-cap"><b>Leads that actually convert</b><small>Headline-led layout with a short supporting caption.</small></span></button></li>
+<li class="work" data-cat="posters"><button type="button" class="work-btn" data-i="7" aria-label="Open Your leads aren't hidden"><img src="img/w13.jpg" width="1448" height="2048" alt="Your leads aren't hidden: Brand statement poster with a strong focal point."><span class="work-cap"><b>Your leads aren't hidden</b><small>Brand statement poster with a strong focal point.</small></span></button></li>
+<li class="work" data-cat="posters"><button type="button" class="work-btn" data-i="8" aria-label="Open You just need to enter"><img src="img/w11.jpg" width="1448" height="2048" alt="You just need to enter: Alternate take of the same campaign idea."><span class="work-cap"><b>You just need to enter</b><small>Alternate take of the same campaign idea.</small></span></button></li>
+<li class="work" data-cat="posters"><button type="button" class="work-btn" data-i="9" aria-label="Open 5 reasons to grab the toolkit"><img src="img/w08.jpg" width="1448" height="2048" alt="5 reasons to grab the toolkit: Collage-style list post."><span class="work-cap"><b>5 reasons to grab the toolkit</b><small>Collage-style list post.</small></span></button></li>
+<li class="work" data-cat="posters"><button type="button" class="work-btn" data-i="10" aria-label="Open 5 reasons, calendar style"><img src="img/w10.jpg" width="1448" height="2048" alt="5 reasons, calendar style: Sticky-note calendar layout for a five-part series."><span class="work-cap"><b>5 reasons, calendar style</b><small>Sticky-note calendar layout for a five-part series.</small></span></button></li>
+<li class="work" data-cat="stories"><button type="button" class="work-btn" data-i="11" aria-label="Open Leads story"><img src="img/w06.jpg" width="1080" height="1920" alt="Leads story: Full-screen vertical story with a notification overlay."><span class="work-cap"><b>Leads story</b><small>Full-screen vertical story with a notification overlay.</small></span></button></li>
+<li class="work" data-cat="stories"><button type="button" class="work-btn" data-i="12" aria-label="Open Start your journey"><img src="img/w07.jpg" width="1080" height="1920" alt="Start your journey: Vertical story introducing the brand."><span class="work-cap"><b>Start your journey</b><small>Vertical story introducing the brand.</small></span></button></li>
+<li class="work" data-cat="stories"><button type="button" class="work-btn" data-i="13" aria-label="Open Lead Gen Flow"><img src="img/w09.jpg" width="1080" height="1920" alt="Lead Gen Flow: Daily-routine story with a task checklist."><span class="work-cap"><b>Lead Gen Flow</b><small>Daily-routine story with a task checklist.</small></span></button></li>
+<li class="work" data-cat="brand"><button type="button" class="work-btn" data-i="14" aria-label="Open Page banner"><img src="img/w15.jpg" width="2048" height="779" alt="Page banner: Cover banner with tagline for the business page."><span class="work-cap"><b>Page banner</b><small>Cover banner with tagline for the business page.</small></span></button></li>
+<li class="work" data-cat="brand"><button type="button" class="work-btn" data-i="15" aria-label="Open Profile logo"><img src="img/w16.jpg" width="2000" height="2000" alt="Profile logo: Circular profile mark sized for social avatars."><span class="work-cap"><b>Profile logo</b><small>Circular profile mark sized for social avatars.</small></span></button></li>
+    </ul>
+  </section>
+
+  <section id="process">
+    <div class="sec-head">
+      <p class="eyebrow">How I work</p>
+      <h2>A simple weekly rhythm you can count on</h2>
+    </div>
+    <ol class="steps">
+      <li><b>Plan</b><span>Set the content calendar and priorities for the week.</span></li>
+      <li><b>Create</b><span>Design the graphics and write captions that fit your brand.</span></li>
+      <li><b>Schedule</b><span>Proofread, queue and publish on the agreed days.</span></li>
+      <li><b>Respond</b><span>Monitor your page and reply to inquiries quickly and politely.</span></li>
+      <li><b>Organize</b><span>File everything neatly so records are easy to find.</span></li>
+    </ol>
+  </section>
+
+  <section id="experience">
+    <div class="sec-head">
+      <p class="eyebrow">Experience</p>
+      <h2>Where I've put these skills to work</h2>
+    </div>
+    <div class="jobs">
+      <article class="job">
+        <div><span class="when">June 2026 – September 2026</span><span class="org">GoldFunnel Co.</span></div>
+        <div><h3>Social Media Management</h3>
+          <ul><li>Created and scheduled social media content for online platforms</li><li>Designed graphics and layouts for promotional materials</li><li>Wrote captions and prepared content for posts</li><li>Monitored pages and responded to inquiries</li><li>Organized digital files, records and content calendars</li><li>Assisted with administrative tasks and online engagement</li></ul></div>
+      </article>
+      <article class="job">
+        <div><span class="when">June 2026 – September 2026</span><span class="org">Freelance</span></div>
+        <div><h3>Administrative Support</h3>
+          <ul><li>Prepared and organized documents and digital records</li><li>Managed data entry and maintained accurate files</li><li>Assisted in preparing reports and official correspondence</li><li>Organized schedules, appointments and meetings</li><li>Coordinated communication and administrative requests</li><li>Provided clerical support and completed daily office tasks</li></ul></div>
+      </article>
+      <article class="job">
+        <div><span class="when">August 2025 – May 2026</span><span class="org">IC-LSG, Davao del Norte State College (volunteer)</span></div>
+        <div><h3>Legislative Secretary</h3>
+          <ul><li>Prepared and organized official documents and records</li><li>Recorded meeting minutes and maintained legislative documentation</li><li>Drafted memorandums, reports and official correspondence</li><li>Coordinated communication between officers and members</li><li>Assisted in organizing student council activities</li></ul></div>
+      </article>
+      <article class="job">
+        <div><span class="when">February – March 2024</span><span class="org">New Corella National High School</span></div>
+        <div><h3>Digital Design Intern</h3>
+          <ul><li>Created layouts for presentations and learning materials</li><li>Produced line art and digital illustrations</li><li>Organized digital documentation</li><li>Coordinated design revisions with supervisors</li></ul></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head">
+      <p class="eyebrow">Skills and credentials</p>
+      <h2>Tools, strengths and training</h2>
+    </div>
+    <div class="skill-cols">
+      <div class="box"><h3>Technical skills</h3>
+        <div class="tags"><span class="tag">Social media management</span><span class="tag">Content scheduling</span><span class="tag">Basic graphic design</span><span class="tag">Caption writing and proofreading</span><span class="tag">Data entry</span><span class="tag">Document management</span><span class="tag">Microsoft Office</span><span class="tag">Google Workspace</span><span class="tag">Email and calendar management</span><span class="tag">Record keeping</span></div></div>
+      <div class="box"><h3>Professional skills</h3>
+        <div class="tags"><span class="tag">Communication</span><span class="tag">Time management</span><span class="tag">Attention to detail</span><span class="tag">Adaptability</span><span class="tag">Organization and planning</span><span class="tag">Problem solving</span><span class="tag">Team collaboration</span><span class="tag">Customer service</span></div></div>
+    </div>
+    <div class="cred">
+      <div class="box"><h3>Education</h3><ul><li>BS Information Systems (ICT, Computing Systems Servicing), Davao del Norte State College, 2024 – 2026</li><li>Senior High School, New Corella National High School, 2022 – 2024. Graduated With Honors</li></ul></div>
+      <div class="box"><h3>Awards</h3><ul><li>National Certificate II in Computer Systems Servicing (validation 2025 – 2030)</li><li>Third Place, Quantitative-Experimental Category, Oral Research Presentation</li><li>Certificate of Participation, Multimedia Film Festival 2024</li></ul></div>
+      <div class="box"><h3>Training</h3><ul><li>Civic Welfare Training Service (CWTS), NSTP A.Y. 2024 – 2025</li><li>Mental Health Awareness 2025, DNSC Community</li><li>Game On: Decoding the New Student Government META</li></ul></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact">
+      <div>
+        <h2>Let's get your pages and paperwork running smoothly.</h2>
+        <p>Send a message about what you need help with. I'll reply with how I can take it off your plate.</p>
+      </div>
+      <div class="rows">
+        <div class="row"><div><small>Email</small><span>nicahinay9@gmail.com</span></div><button type="button" data-copy="nicahinay9@gmail.com">Copy</button></div>
+        <div class="row"><div><small>Phone</small><span>09124784638</span></div><button type="button" data-copy="09124784638">Copy</button></div>
+        <div class="row"><div><small>LinkedIn</small><span>linkedin.com/in/nica-hinay</span></div><a class="go" href="https://www.linkedin.com/in/nica-hinay" target="_blank" rel="noopener">Open</a></div>
+        <div class="row"><div><small>Based in</small><span>Davao del Norte, Philippines</span></div></div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>Nica Lee Shane Hinay · Social Media and Administrative Support</footer>
+
+<dialog class="lb" id="lb" aria-label="Work sample viewer">
+  <div class="lb-in">
+    <div class="lb-img"><img id="lbImg" src="" alt=""></div>
+    <div class="lb-bar">
+      <p><b id="lbT"></b><br><span id="lbD"></span></p>
+      <div class="lb-btns"><button type="button" id="lbPrev">Previous</button><button type="button" id="lbNext">Next</button><button type="button" id="lbX">Close</button></div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  var data=[{"src": "img/w01.jpg", "t": "Toolkit launch ad", "d": "Launch-price promo with a comment-to-get-the-link call to action."}, {"src": "img/w14.jpg", "t": "Before and after promo", "d": "Problem and result layout built to stop the scroll."}, {"src": "img/w02.jpg", "t": "What's inside", "d": "Feature breakdown of the toolkit contents in brand colors."}, {"src": "img/w03.jpg", "t": "Enter your pipeline", "d": "Concept poster with a single clear message."}, {"src": "img/w04.jpg", "t": "Here's why", "d": "Product mockup layout with price and checkout details."}, {"src": "img/w05.jpg", "t": "Elevate your business", "d": "Carousel cover with file tabs for multi-slide posts."}, {"src": "img/w12.jpg", "t": "Leads that actually convert", "d": "Headline-led layout with a short supporting caption."}, {"src": "img/w13.jpg", "t": "Your leads aren't hidden", "d": "Brand statement poster with a strong focal point."}, {"src": "img/w11.jpg", "t": "You just need to enter", "d": "Alternate take of the same campaign idea."}, {"src": "img/w08.jpg", "t": "5 reasons to grab the toolkit", "d": "Collage-style list post."}, {"src": "img/w10.jpg", "t": "5 reasons, calendar style", "d": "Sticky-note calendar layout for a five-part series."}, {"src": "img/w06.jpg", "t": "Leads story", "d": "Full-screen vertical story with a notification overlay."}, {"src": "img/w07.jpg", "t": "Start your journey", "d": "Vertical story introducing the brand."}, {"src": "img/w09.jpg", "t": "Lead Gen Flow", "d": "Daily-routine story with a task checklist."}, {"src": "img/w15.jpg", "t": "Page banner", "d": "Cover banner with tagline for the business page."}, {"src": "img/w16.jpg", "t": "Profile logo", "d": "Circular profile mark sized for social avatars."}];
+
+  var items=[].slice.call(document.querySelectorAll('.work'));
+  var chips=[].slice.call(document.querySelectorAll('.chip'));
+  chips.forEach(function(c){c.addEventListener('click',function(){
+    chips.forEach(function(x){x.setAttribute('aria-pressed',x===c?'true':'false')});
+    var f=c.dataset.f;
+    items.forEach(function(li){li.hidden=!(f==='all'||li.dataset.cat===f)});
+  })});
+  var lb=document.getElementById('lb'),img=document.getElementById('lbImg'),cur=0;
+  function visible(){return items.filter(function(li){return !li.hidden}).map(function(li){return +li.querySelector('button').dataset.i})}
+  function show(i){cur=i;var d=data[i];img.src=d.src;img.alt=d.t;document.getElementById('lbT').textContent=d.t;document.getElementById('lbD').textContent=d.d}
+  function step(dir){var v=visible();var k=v.indexOf(cur);show(v[(k+dir+v.length)%v.length])}
+  document.getElementById('works').addEventListener('click',function(e){
+    var b=e.target.closest('.work-btn');if(!b)return;show(+b.dataset.i);
+    if(lb.showModal){lb.showModal()}else{lb.setAttribute('open','')}
+  });
+  document.getElementById('lbX').onclick=function(){lb.close()};
+  document.getElementById('lbPrev').onclick=function(){step(-1)};
+  document.getElementById('lbNext').onclick=function(){step(1)};
+  lb.addEventListener('keydown',function(e){if(e.key==='ArrowLeft')step(-1);if(e.key==='ArrowRight')step(1)});
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.close()});
+  [].forEach.call(document.querySelectorAll('[data-copy]'),function(b){b.addEventListener('click',function(){
+    var t=b.dataset.copy,old=b.textContent;
+    function ok(){b.textContent='Copied';setTimeout(function(){b.textContent=old},1600)}
+    function fallback(){var s=b.parentNode.querySelector('span');var r=document.createRange();r.selectNodeContents(s);var sel=getSelection();sel.removeAllRanges();sel.addRange(r);b.textContent='Selected'; setTimeout(function(){b.textContent=old},1600)}
+    try{navigator.clipboard.writeText(t).then(ok,fallback)}catch(e){fallback()}
+  })});
+})();
+</script>
+
+</body></html>
